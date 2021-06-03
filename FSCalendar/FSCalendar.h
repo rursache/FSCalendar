@@ -80,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable UIImage *)calendar:(FSCalendar *)calendar imageForDate:(NSDate *)date;
 
-- (NSCalendar *)getGregorian;
+
 
 /**
  * Asks the dataSource the minimum date to display.
@@ -249,6 +249,8 @@ IB_DESIGNABLE
 @property (weak  , nonatomic) FSCalendarCollectionView   *collectionView;
 
 @property (strong, nonatomic) FSCalendarCalculator       *calculator;
+
+- (NSCalendar *)getGregorian;
 /**
  * The object that acts as the delegate of the calendar.
  */
