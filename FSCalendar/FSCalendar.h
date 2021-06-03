@@ -21,7 +21,7 @@
 #import "FSCalendarCell.h"
 #import "FSCalendarWeekdayView.h"
 #import "FSCalendarHeaderView.h"
-
+#import "FSCalendarCalculator.h"
 #import "FSCalendarCollectionView.h"
 
 //! Project version number for FSCalendar.
@@ -246,7 +246,7 @@ IB_DESIGNABLE
 
 @property (weak  , nonatomic) FSCalendarCollectionView   *collectionView;
 
-
+@property (strong, nonatomic) FSCalendarCalculator       *calculator;
 /**
  * The object that acts as the delegate of the calendar.
  */
@@ -381,6 +381,8 @@ IB_DESIGNABLE
  The row height of the calendar if paging enabled is NO.;
  */
 @property (assign, nonatomic) IBInspectable CGFloat rowHeight;
+
+@property (assign, nonatomic) UIEdgeInsets calendarMainViewInsets;
 
 /**
  The calendar appearance used to control the global fonts、colors .etc

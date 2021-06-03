@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     NSMutableArray  *_selectedDates;
 }
 
-@property (strong, nonatomic) FSCalendarCalculator       *calculator;
+
 
 @property (strong, nonatomic) NSCalendar *gregorian;
 @property (strong, nonatomic) NSDateFormatter *formatter;
@@ -295,7 +295,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         CGFloat headerHeight = self.preferredHeaderHeight;
         CGFloat weekdayHeight = self.preferredWeekdayHeight;
         CGFloat rowHeight = self.preferredRowHeight;
-        CGFloat padding = 5;
+        CGFloat padding = self.calendarMainViewInsets.top + self.calendarMainViewInsets.bottom;
         if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
             rowHeight = FSCalendarFloor(rowHeight*2)*0.5; // Round to nearest multiple of 0.5. e.g. (16.8->16.5),(16.2->16.0)
         }
@@ -819,6 +819,16 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     }
 }
 
+- (UIEdgeInsets)calendarMainViewInsets
+{
+	return self.collectionViewLayout.sectionInsets;
+}
+
+- (void)setCalendarMainViewInsets:(UIEdgeInsets)calendarMainViewInsets
+{
+	self.collectionViewLayout.sectionInsets = calendarMainViewInsets;
+}
+
 - (void)setAllowsMultipleSelection:(BOOL)allowsMultipleSelection
 {
     _collectionView.allowsMultipleSelection = allowsMultipleSelection;
@@ -924,7 +934,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         CGFloat headerHeight = self.preferredHeaderHeight;
         CGFloat weekdayHeight = self.preferredWeekdayHeight;
         CGFloat contentHeight = self.transitionCoordinator.cachedMonthSize.height-headerHeight-weekdayHeight;
-        CGFloat padding = 5;
+        CGFloat padding = self.calendarMainViewInsets.top + self.calendarMainViewInsets.bottom;
         if (!self.floatingMode) {
             _preferredRowHeight = (contentHeight-padding*2)/6.0;
         } else {

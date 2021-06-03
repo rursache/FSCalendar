@@ -15,6 +15,8 @@ struct FSCalendarCoordinate {
 };
 typedef struct FSCalendarCoordinate FSCalendarCoordinate;
 
+typedef NS_ENUM(NSUInteger, FSCalendarScope);
+
 @interface FSCalendarCalculator : NSObject
 
 @property (weak  , nonatomic) FSCalendar *calendar;
