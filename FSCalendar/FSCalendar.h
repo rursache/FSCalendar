@@ -22,6 +22,8 @@
 #import "FSCalendarWeekdayView.h"
 #import "FSCalendarHeaderView.h"
 
+#import "FSCalendarCollectionView.h"
+
 //! Project version number for FSCalendar.
 FOUNDATION_EXPORT double FSCalendarVersionNumber;
 
@@ -29,8 +31,8 @@ FOUNDATION_EXPORT double FSCalendarVersionNumber;
 FOUNDATION_EXPORT const unsigned char FSCalendarVersionString[];
 
 typedef NS_ENUM(NSUInteger, FSCalendarScope) {
-    FSCalendarScopeMonth,
-    FSCalendarScopeWeek
+	FSCalendarScopeMonth,
+	FSCalendarScopeWeek
 };
 
 typedef NS_ENUM(NSUInteger, FSCalendarScrollDirection) {
@@ -241,6 +243,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 IB_DESIGNABLE
 @interface FSCalendar : UIView
+
+@property (weak  , nonatomic) FSCalendarCollectionView   *collectionView;
+
 
 /**
  * The object that acts as the delegate of the calendar.

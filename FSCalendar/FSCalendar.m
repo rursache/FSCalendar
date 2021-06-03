@@ -11,12 +11,10 @@
 #import "FSCalendarWeekdayView.h"
 #import "FSCalendarStickyHeader.h"
 #import "FSCalendarCollectionViewLayout.h"
-
+#import "FSCalendarCalculator.h"
 #import "FSCalendarExtensions.h"
 #import "FSCalendarDynamicHeader.h"
-#import "FSCalendarCollectionView.h"
 #import "FSCalendarTransitionCoordinator.h"
-#import "FSCalendarCalculator.h"
 #import "FSCalendarDelegationFactory.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -48,17 +46,19 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     NSMutableArray  *_selectedDates;
 }
 
+@property (strong, nonatomic) FSCalendarCalculator       *calculator;
+
 @property (strong, nonatomic) NSCalendar *gregorian;
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSTimeZone *timeZone;
 
 @property (weak  , nonatomic) UIView                     *contentView;
 @property (weak  , nonatomic) UIView                     *daysContainer;
-@property (weak  , nonatomic) FSCalendarCollectionView   *collectionView;
+
 @property (weak  , nonatomic) FSCalendarCollectionViewLayout *collectionViewLayout;
 
 @property (strong, nonatomic) FSCalendarTransitionCoordinator *transitionCoordinator;
-@property (strong, nonatomic) FSCalendarCalculator       *calculator;
+
 
 @property (weak  , nonatomic) FSCalendarHeaderTouchDeliver *deliver;
 
@@ -1526,6 +1526,10 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     [self requestBoundingDatesIfNecessary];
     NSDate *targetPage = self.pagingEnabled?self.currentPage:(self.currentPage?:self.selectedDate);
     [self scrollToPageForDate:targetPage animated:NO];
+}
+
+- (FSCalendarCalculator*)getCalculator {
+	return self.calculator;
 }
 
 - (BOOL)requestBoundingDatesIfNecessary
