@@ -80,6 +80,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable UIImage *)calendar:(FSCalendar *)calendar imageForDate:(NSDate *)date;
 
+- (NSCalendar *)getGregorian;
+
 /**
  * Asks the dataSource the minimum date to display.
  */
@@ -478,6 +480,7 @@ IB_DESIGNABLE
  */
 - (nullable FSCalendarCell *)cellForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position;
 
+- (nullable NSIndexPath *)indexPathForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position;
 
 /**
  Returns the date of the specified cell.

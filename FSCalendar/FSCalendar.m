@@ -1045,6 +1045,15 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     [self selectDate:date scrollToDate:scrollToDate atMonthPosition:FSCalendarMonthPositionCurrent];
 }
 
+- (NSCalendar *)getGregorian {
+	return self.gregorian;
+}
+
+- (nullable NSIndexPath *)indexPathForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position
+{
+  return [self.calculator indexPathForDate:date atMonthPosition:position];
+}
+
 - (void)deselectDate:(NSDate *)date
 {
     date = [self.gregorian startOfDayForDate:date];
